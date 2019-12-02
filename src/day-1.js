@@ -6,13 +6,13 @@ export function fuelRequirementAdditional(mass) {
     const fuelTotal = [];
 
     while (mass > 0) {
-        let result = fuelRequirement(mass);
+        mass = fuelRequirement(mass);
 
-        if (result > 0) {
-            fuelTotal.push(result);
+        if (mass < 0) {
+            break;
         }
-
-        mass = result;
+        
+        fuelTotal.push(mass);
     }
 
     return fuelTotal.reduce((a, b) => a + b, 0);
